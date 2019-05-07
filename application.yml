@@ -1,0 +1,30 @@
+spring:
+  profiles:
+    active:
+    - dev
+---
+server:
+  port: 8001
+spring:
+  profiles: dev
+  application:
+    name: USER-PROVIDER #不要使用下划线
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-7001.com:7001/eureka,http://eureka-7002.com:7002/eureka
+  instance:
+    prefer-ip-address: true #告诉服务提供者要把服务注册到哪儿
+---
+server:
+  port: 8847
+spring:
+  profiles: test
+  application:
+    name: USER-PROVIDER-TEST #不要使用下划线
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-7001.com:7001/eureka,http://eureka-7002.com:7002/eureka
+  instance:
+    prefer-ip-address: true #告诉服务提供者要把服务注册到哪儿
